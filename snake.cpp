@@ -50,10 +50,12 @@ void Snake::MoveStep()
 
 void Snake::Draw(SDL_Renderer *pRenderer)
 {
-    const int x = m_body.x * BLOCK_WIDTH;
-    const int y = m_body.y * BLOCK_HEIGHT;
-    SDL_Rect rect = { x, y, BLOCK_WIDTH, BLOCK_HEIGHT };
-    SDL_SetRenderDrawColor(pRenderer, 255, 0, 0, SDL_ALPHA_OPAQUE);
-    SDL_RenderDrawRect(pRenderer, &rect);
-    SDL_RenderFillRect(pRenderer, &rect);
+    if (pRenderer) {
+        const int x = m_body.x * BLOCK_WIDTH;
+        const int y = m_body.y * BLOCK_HEIGHT;
+        SDL_Rect rect = { x, y, BLOCK_WIDTH, BLOCK_HEIGHT };
+        SDL_SetRenderDrawColor(pRenderer, 255, 0, 0, SDL_ALPHA_OPAQUE);
+        SDL_RenderDrawRect(pRenderer, &rect);
+        SDL_RenderFillRect(pRenderer, &rect);
+    }
 }
